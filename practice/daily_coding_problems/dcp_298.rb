@@ -7,16 +7,14 @@ Given an input describing the types of apples she will pass on her path, in orde
 For example, given the input [2, 1, 2, 3, 3, 1, 3, 5], the longest portion will involve types 1 and 3, with a length of four.
 """
 
-require 'set'
-
 def longestPortion(arr)
     portion = []
     for i in (0..arr.length - 1)
         temp = [arr[i]]
-        types = Set[arr[i]]
+        types = [arr[i]]
 
         for j in (i+1..arr.length)
-            types << arr[j]
+            types << arr[j] if not types.include?(arr[j]) # types.length <= 2 always
             break if types.length > 2
             temp << arr[j]
         end
