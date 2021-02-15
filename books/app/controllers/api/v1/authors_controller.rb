@@ -20,7 +20,7 @@ module Api
         @author = Author.new(author_params)
     
         if @author.save
-          render json: @author, status: :created, location: @author
+          render json: @author, status: :created, location: :api_v1_authors
         else
           render json: @author.errors, status: :unprocessable_entity
         end
